@@ -1,3 +1,5 @@
+require 'faker'
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -7,8 +9,9 @@ class User < ApplicationRecord
   before_create :give_anonyme_name
 
   private
+
   def give_anonyme_name
-    self.first_name = 'Gustav'
-    self.last_name = 'Horst'
+    self.first_name = Faker::Color.color_name
+    self.last_name = Faker::Creature::Animal.name
   end
 end
