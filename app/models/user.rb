@@ -3,8 +3,8 @@ require 'faker'
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :registerable, :rememberable, :validatable
+  validates :first_name, :last_name, :level, :xp, presence: true
 
   before_create :give_anonyme_name
 
