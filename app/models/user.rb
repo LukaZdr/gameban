@@ -6,12 +6,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :rememberable, :validatable
   validates :first_name, :last_name, :level, :xp, presence: true
 
-  before_create :give_anonyme_name
+  before_validation :give_anonyme_name
 
   private
 
   def give_anonyme_name
-    self.first_name = Faker::Color.color_name
-    self.last_name = Faker::Creature::Animal.name
+    self.first_name ||= Faker::Color.color_name
+    self.last_name ||= Faker::Creature::Animal.name
   end
 end
