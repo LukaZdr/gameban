@@ -14,9 +14,12 @@ gem 'bootstrap', '>= 4.3.1'
 gem 'jquery-rails'
 gem 'devise'
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'faker'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
+  gem 'factory_bot_rails'
 end
 
 group :development do
