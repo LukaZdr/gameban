@@ -14,6 +14,7 @@ gem 'bootstrap', '>= 4.3.1'
 gem 'jquery-rails', '>= 4.3.3'
 gem 'devise', '>= 4.7.1'
 gem 'faker', '>= 2.7.0'
+gem 'font-awesome-rails'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
