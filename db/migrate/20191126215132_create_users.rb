@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :last_name, null: false
       t.bigint :level
       t.bigint :xp
-      t.integer :picture_id
+      t.integer :picture_id, default: 0
     end
   end
 end

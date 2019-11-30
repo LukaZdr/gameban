@@ -10,6 +10,7 @@ class User < ApplicationRecord
     User.order(xp: :desc).index(self) + 1
   end
 
+
   private
 
   def give_anonyme_name

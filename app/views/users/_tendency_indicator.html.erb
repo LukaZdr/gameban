@@ -1,0 +1,7 @@
+<% if user.xp > user.prior_xp %>
+  <%= fa_icon('angle-up') %>
+<% elsif user.prior_xp > user.xp %>
+  <%= fa_icon('angle-down') %>
+<% else %>
+  <%= fa_icon('minus') %>
+<% end %>
