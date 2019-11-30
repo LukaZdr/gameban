@@ -8,6 +8,10 @@ class User < ApplicationRecord
 
   before_validation :give_anonyme_name
 
+  def company_rank
+    User.order(xp: :desc).index(self) + 1
+  end
+
   private
 
   def give_anonyme_name
