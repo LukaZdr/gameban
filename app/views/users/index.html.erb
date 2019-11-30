@@ -2,7 +2,13 @@
   <div class="col-4 offset-4">
     <div class="card text-white bg-dark">
       <div class="card-header">Scoreboard</div>
-        users here pls
+        <div class="col">
+          <% @factory.each do |user| %>
+            <div class="alert alert-dark" role="alert">
+              <%= render partial: 'user', locals: { user: user } %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

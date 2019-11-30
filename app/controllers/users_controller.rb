@@ -2,6 +2,6 @@ class UsersController < ApplicationController
   def show; end
 
   def index
-    @users = User.all
+    @factory = User.order(xp: :desc)
   end
 end
