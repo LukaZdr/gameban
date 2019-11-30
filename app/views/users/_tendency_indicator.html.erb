@@ -1,7 +1,5 @@
-<% if user.xp > user.prior_xp %>
+<% if tendency == 1 %>
   <%= fa_icon('angle-up') %>
-<% elsif user.prior_xp > user.xp %>
+<% elsif tendency == -1 %>
   <%= fa_icon('angle-down') %>
-<% else %>
-  <%= fa_icon('minus') %>
 <% end %>
