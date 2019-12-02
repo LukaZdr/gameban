@@ -1,6 +1,9 @@
 <nav class="navbar navbar-dark bg-dark">
   <%= link_to 'Gameban', root_path, class:'navbar-brand' %>
   <%= link_to 'Project Board', '#', class:'navbar-brand' %>
-  <%= link_to 'Scoreboard', '#', class:'navbar-brand' %>
-  <%= link_to "#{current_user.first_name} #{current_user.last_name}", '#', class:'navbar-brand' %>
+  <%= link_to 'Scoreboard', users_path, class:'navbar-brand' %>
+  <div>
+    <%= link_to "#{current_user.first_name} #{current_user.last_name}", user_path(current_user), class:'navbar-brand'  if current_user.present? %>
+    <%= link_to fa_icon("sign-out"), destroy_user_session_path, method: :delete, class:'navbar-brand' %>
+  </div>
 </nav>
