@@ -24,3 +24,5 @@ test:
 production:
   <<: *default
   database: gameban_production
+  username: gameban
+  password: <%= ENV['DATABASE_PASSWORD']%>
