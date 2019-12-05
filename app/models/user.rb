@@ -26,12 +26,12 @@ class User < ApplicationRecord
 
   def update_user_tendencys(new_xp, prior_xp)
     lower_xp = new_xp - 1
-    if User.where(xp: (prior_xp..lower_xp)).blank?
+    if User.where(xp: (prior_xp..lower_xp)).any?
       self.tendency = 0
     else
       User.where(xp: (prior_xp..lower_xp)).each do |user|
         user.tendency = -1
-        user.save
+        user.save!
       end
       self.tendency = 1
     end
