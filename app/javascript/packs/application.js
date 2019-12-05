@@ -3,14 +3,14 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-import 'jquery3';
-import 'jquery_ujs';
+require('jquery')
+require('jquery_ujs')
 require('@rails/ujs').start()
 require('turbolinks').start()
 require('@rails/activestorage').start()
-import "channels";
-import 'popper';
-import 'bootstrap-sprockets';
+require("channels")
+require('popper')
+require('bootstrap-sprockets')
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

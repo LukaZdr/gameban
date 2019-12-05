@@ -6,7 +6,6 @@ gem 'bundler'
 
 gem 'rails', '~> 6.0.1'
 gem 'mysql2', '~> 0.5.2'
-gem 'jquery-rails', '>= 4.3.3'
 gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
