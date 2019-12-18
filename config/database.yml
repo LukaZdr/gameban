@@ -22,7 +22,4 @@ test:
   database: gameban_test
 
 production:
-  <<: *default
-  database: gameban_production
-  username: gameban
-  password: <%= ENV['DATABASE_PASSWORD']%>
+  url: <%= ENV['JAWSDB_URL'] %>
