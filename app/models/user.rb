@@ -3,6 +3,8 @@ require 'faker'
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :rememberable, :validatable
   validates :first_name, :last_name, :level, :xp, presence: true
+  has_many :tickets
+  has_many :projects
 
   before_validation :give_anonyme_name
 
