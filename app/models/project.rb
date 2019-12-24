@@ -1,5 +1,5 @@
 class Project < ApplicationRecord
-  validate :name, presence: true, uniqueness: true
-  has_many :tickets
+  validates :name, presence: true, uniqueness: true
+  has_many :sprints
   has_many :users
 end

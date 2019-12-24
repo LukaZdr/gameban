@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-4 offset-4">
+    <div class="card text-white bg-dark">
+      <div class="card-header">Your Projects</div>
+        <div class="col">
+          <% @projects.each do |project| %>
+            <div class="alert alert-dark">
+              <a href='<%= project_path(project) %>'>
+                <h5><%= project.name %></h5>
+                <%= project.description %>
+              <a>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
