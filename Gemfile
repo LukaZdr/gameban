@@ -17,6 +17,7 @@ gem 'faker', '>= 2.7.0'
 gem 'font-awesome-rails'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rails_12factor'
+gem 'simple_form'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

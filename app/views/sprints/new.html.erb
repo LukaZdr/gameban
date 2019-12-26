@@ -1,0 +1,7 @@
+<%= simple_form_for @sprint, url: project_sprints_path do |f| %>
+  <%= f.input :project_id, html: { input: @project.id }, as: :hidden %>
+  <%= f.input :start_time, as: :datetime %>
+  <%= f.input :end_time, as: :datetime %>
+  <%= f.input :qualeties %>
+  <%= f.submit 'Save' %>
+<% end %>
