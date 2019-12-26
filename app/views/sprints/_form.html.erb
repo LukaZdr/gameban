@@ -1,7 +1,7 @@
 <%= simple_form_for sprint, url: project_sprints_path do |f| %>
   <%= f.input :project_id, html: { input: project_id }, as: :hidden %>
-  <%= f.input :start_time, as: :datetime %>
-  <%= f.input :end_time, as: :datetime %>
+  <%= f.input :start_time, as: :date %>
+  <%= f.collection_radio_buttons :length, [[1, 'one week'] ,[2, 'two weeks'], [3, 'three weeks']],:first, :last %>
   <%= f.input :quality_1 %>
   <%= f.input :quality_2 %>
   <%= f.input :quality_3 %>

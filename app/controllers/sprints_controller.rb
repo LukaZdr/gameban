@@ -23,12 +23,14 @@ class SprintsController < ApplicationController
 
   def edit
     @project = Project.find(params[:project_id])
-    @sprint = @project.sprints.build
+    @sprint = Sprint.find(params[:id])
   end
 
   def update
-    @project = Project.find(params[:project_id])
-    @sprint = @project.sprints.build(sprint_params)
+    print(params)
+    @sprint = Sprint
+    start_time = Date.parse([params[:sprint]["start_time(1i)"], params[:sprint]["start_time(2i)"], params[:sprint]["start_time(3i)"]].join("-"))
+    params[:sprint][:start_time] = start_time
     if @sprint.save
       flash[:notice] = 'Sprint whas been updated'
       redirect_to project_sprints_path
@@ -43,7 +45,7 @@ class SprintsController < ApplicationController
   def sprint_params
     params.require(:sprint).permit(:project_id,
                                    :start_time,
-                                   :end_time,
+                                   :length,
                                    :quality_1,
                                    :quality_2,
                                    :quality_3,

@@ -3,7 +3,7 @@ class Sprint < ApplicationRecord
   has_many :tickets
 
   validate :different_qualities?
-  validates :project_id, :start_time, :end_time, presence: true
+  validates :project_id, :start_time, :length, presence: true
   validates :quality_1, :quality_2, :quality_3, :quality_4, :quality_5, presence: true
 
   def code_qualeties
