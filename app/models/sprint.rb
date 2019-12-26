@@ -10,6 +10,8 @@ class Sprint < ApplicationRecord
     [self.quality_1, self.quality_2, self.quality_3, self.quality_4, self.quality_5]
   end
 
+  private
+
   def different_qualities?
     unless code_qualeties.uniq.length == 5
       errors.add(:code_qualeties, "is not active")

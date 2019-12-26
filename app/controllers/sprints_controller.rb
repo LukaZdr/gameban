@@ -8,7 +8,7 @@ class SprintsController < ApplicationController
     @project = Project.find(params[:project_id])
     @sprint = @project.sprints.build(sprint_params)
     if @sprint.save
-      flash[:notice] = 'Sprint whas been created'
+      flash[:notice] = 'Sprint has been created'
       redirect_to project_sprints_path
     else
       flash[:alert] = 'Sprint could not be created'
@@ -27,13 +27,11 @@ class SprintsController < ApplicationController
   end
 
   def update
-    print(params)
-    @sprint = Sprint
-    start_time = Date.parse([params[:sprint]["start_time(1i)"], params[:sprint]["start_time(2i)"], params[:sprint]["start_time(3i)"]].join("-"))
-    params[:sprint][:start_time] = start_time
-    if @sprint.save
-      flash[:notice] = 'Sprint whas been updated'
-      redirect_to project_sprints_path
+    @sprint = Sprint.find(params[:id])
+    @project = Project.find(@sprint.project_id)
+    if @sprint.update(sprint_params)
+      flash[:notice] = 'Sprint has been updated'
+      redirect_to project_sprints_path(@sprint.project_id)
     else
       flash[:alert] = 'Sprint could not be updated'
       render 'edit'
