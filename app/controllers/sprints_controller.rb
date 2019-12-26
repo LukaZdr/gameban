@@ -9,6 +9,11 @@ class SprintsController < ApplicationController
     redirect_to root_path
   end
 
+  def index
+    @project = Project.find(params[:project_id])
+    @sprints = Sprint.where(project_id: params[:project_id])
+  end
+
   private
 
   def sprint_params
