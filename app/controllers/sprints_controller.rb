@@ -41,6 +41,13 @@ class SprintsController < ApplicationController
   private
 
   def sprint_params
-    params.require(:sprint).permit(:project_id, :start_time, :end_time, :qualeties)
+    params.require(:sprint).permit(:project_id,
+                                   :start_time,
+                                   :end_time,
+                                   :quality_1,
+                                   :quality_2,
+                                   :quality_3,
+                                   :quality_4,
+                                   :quality_5,)
   end
 end
