@@ -1,0 +1,11 @@
+<%= simple_form_for @sprint, url: project_sprints_path do |f| %>
+  <%= f.input :project_id, html: { input: @project.id }, as: :hidden %>
+  <%= f.input :start_time, as: :date %>
+  <%= f.collection_radio_buttons :length, [[1, 'one week'] ,[2, 'two weeks'], [3, 'three weeks']],:first, :last %>
+  <%= f.input :quality_1 %>
+  <%= f.input :quality_2 %>
+  <%= f.input :quality_3 %>
+  <%= f.input :quality_4 %>
+  <%= f.input :quality_5 %>
+  <%= f.submit 'Save' %>
+<% end %>

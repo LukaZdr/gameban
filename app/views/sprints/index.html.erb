@@ -1,0 +1,8 @@
+<h3>Project Sprints</h3>
+<h5>Project: <%= @project.name %></h5>
+<%= link_to 'new sprint', new_project_sprint_path(@project) %> <br>
+<% @sprints.each do |sprint| %>
+  <%= sprint.start_time %>
+  <%= link_to 'edit', edit_project_sprint_path(id: sprint.id) %>
+  <br>
+<% end %>

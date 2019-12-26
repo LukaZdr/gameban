@@ -10,14 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_05_200652) do
-
-  create_table "project_tickets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "project_id"
-    t.bigint "ticket_id"
-    t.index ["project_id"], name: "index_project_tickets_on_project_id"
-    t.index ["ticket_id"], name: "index_project_tickets_on_ticket_id"
-  end
+ActiveRecord::Schema.define(version: 2019_12_26_204352) do
 
   create_table "project_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "project_id"
@@ -31,11 +24,27 @@ ActiveRecord::Schema.define(version: 2019_12_05_200652) do
     t.string "description"
   end
 
+  create_table "sprints", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "project_id"
+    t.date "start_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "quality_1"
+    t.string "quality_2"
+    t.string "quality_3"
+    t.string "quality_4"
+    t.string "quality_5"
+    t.integer "length"
+    t.index ["project_id"], name: "index_sprints_on_project_id"
+  end
+
   create_table "tickets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "sprint_id"
+    t.index ["sprint_id"], name: "index_tickets_on_sprint_id"
   end
 
   create_table "user_tickets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -63,10 +72,9 @@ ActiveRecord::Schema.define(version: 2019_12_05_200652) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "project_tickets", "projects"
-  add_foreign_key "project_tickets", "tickets"
   add_foreign_key "project_users", "projects"
   add_foreign_key "project_users", "users"
+  add_foreign_key "sprints", "projects"
   add_foreign_key "user_tickets", "tickets"
   add_foreign_key "user_tickets", "users"
 end
