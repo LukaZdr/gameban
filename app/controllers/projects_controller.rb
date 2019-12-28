@@ -7,5 +7,6 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @sprint = Sprint.last
   end
 end

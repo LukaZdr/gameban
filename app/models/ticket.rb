@@ -1,7 +1,10 @@
 class Ticket < ApplicationRecord
-  validates :name, :description, presence: true
-  belongs_to :sprints
-  belongs_to :user
+  STATUSES = ['Backlog', 'Todo', 'In progress', 'Quality Assurance', 'Done']
+  PRIORITIES = ['Critical', 'Major', 'Moderate', 'Low']
 
-  COLUMNS = ['Backlog', 'Todo', 'In progress', 'Quality Assurance', 'Done']
+  validates :name, :description, presence: true
+  validates :priority, inclusion: { in: PRIORITIES }
+  validates :status, inclusion: { in: STATUSES }
+  belongs_to :sprint
+  belongs_to :user, optional: true
 end

@@ -1,0 +1,18 @@
+<div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
+  <div class="card-header">
+    <h5 class="card-title">
+      <%= status %>
+    </h5>
+  </div>
+  <div class="card-body">
+    <% Ticket.all.each do |ticket| %>
+      <%= render partial: 'tickets/card', locals: { ticket: ticket } %>
+    <% end %>
+  </div>
+  <div class="card-footer">
+    <a  href='#createTicket' class='btn btn-secondary' data-toggle="modal" data-target="#create<%= status.parameterize %>Ticket">
+      <%= fa_icon("plus") %>
+    </a>
+    <%= render partial: 'tickets/create_modal', locals: { status: status, sprint: sprint} %>
+  </div>
+</div>

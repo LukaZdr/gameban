@@ -1,0 +1,8 @@
+<a class="card" href='#editTicket' data-toggle="modal" data-target="#createModal<%= ticket.id %>">
+  <div class="card-body text-dark">
+    <h5 class="card-title"><%= ticket.name %></h5>
+    <p class="card-text"><%= ticket.description %></p>
+  </div>
+</a>
+
+<%= render partial: 'tickets/edit_modal', locals: { ticket: ticket } %>
