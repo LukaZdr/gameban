@@ -8,7 +8,7 @@ class SprintsController < ApplicationController
     @project = Project.find(params[:project_id])
     @sprint = @project.sprints.build(sprint_params)
     if @sprint.save
-      flash[:notice] = 'Sprint has been created'
+      flash[:success] = 'Sprint has been created'
       redirect_to project_sprints_path
     else
       flash[:alert] = 'Sprint could not be created'
@@ -30,10 +30,10 @@ class SprintsController < ApplicationController
     @sprint = Sprint.find(params[:id])
     @project = Project.find(@sprint.project_id)
     if @sprint.update(sprint_params)
-      flash[:notice] = 'Sprint has been updated'
-      redirect_to project_sprints_path(@sprint.project_id)
+      flash[:success] = 'Sprint has been updated'
+      redirect_to project_sprints_path(@project.id)
     else
-      flash[:alert] = 'Sprint could not be updated'
+      flash.now[:error] = 'Sprint could not be updated'
       render 'edit'
     end
   end
