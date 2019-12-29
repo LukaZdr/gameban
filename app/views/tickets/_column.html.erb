@@ -5,14 +5,15 @@
     </h5>
   </div>
   <div class="card-body">
-    <% Ticket.all.each do |ticket| %>
+    <% project.get_column_tickets(status).each do |ticket| %>
       <%= render partial: 'tickets/card', locals: { ticket: ticket } %>
+      <br>
     <% end %>
   </div>
   <div class="card-footer">
     <a  href='#createTicket' class='btn btn-secondary' data-toggle="modal" data-target="#create<%= status.parameterize %>Ticket">
       <%= fa_icon("plus") %>
     </a>
-    <%= render partial: 'tickets/create_modal', locals: { status: status, sprint: sprint} %>
+    <%= render partial: 'tickets/create_modal', locals: { status: status, project: project} %>
   </div>
 </div>

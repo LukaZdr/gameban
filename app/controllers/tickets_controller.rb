@@ -10,6 +10,16 @@ class TicketsController < ApplicationController
     end
   end
 
+  def update
+    ticket = Ticket.find(params[:id])
+    if ticket.update(ticket_params)
+      redirect_to project_path(params[:project_id])
+    else
+      flash[:alert] = 'Ticket could not be updated'
+      redirect_to project_path(params[:project_id])
+    end
+  end
+
   private
 
   def ticket_params

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index]
   resources :projects, only: [:index, :show] do
     resources :sprints do
-      resources :tickets, only: [:create, :edit, :delete]
+      resources :tickets, only: [:create, :update, :delete]
     end
   end
   root 'welcome#show'

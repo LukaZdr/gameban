@@ -7,7 +7,7 @@
 <div class="row">
   <% Ticket::STATUSES.each do |status| %>
     <div class="col">
-      <%= render partial: 'tickets/column', locals: { status: status, sprint: @sprint } %>
+      <%= render partial: 'tickets/column', locals: { status: status, project: @project } %>
     </div>
   <% end %>
 </div>

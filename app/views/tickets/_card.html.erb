@@ -1,7 +1,23 @@
 <a class="card" href='#editTicket' data-toggle="modal" data-target="#createModal<%= ticket.id %>">
   <div class="card-body text-dark">
-    <h5 class="card-title"><%= ticket.name %></h5>
-    <p class="card-text"><%= ticket.description %></p>
+    <div class="card-title">
+      <div class="row">
+        <div class="col-8">
+          <h5>
+            <%= ticket.name %>
+          </h5>
+        </div>
+        <div class="col-3">
+          <div class="row">
+            <%= render partial: 'tickets/prioritie_badge', locals: { priority: ticket.priority } %>
+          </div>
+          <div class="row">
+            Hours: <%= ticket.hours_of_work %>
+          </div>
+        </div>
+      </div>
+      <p class="card-text"><%= ticket.description %></p>
+    </div>
   </div>
 </a>
 
