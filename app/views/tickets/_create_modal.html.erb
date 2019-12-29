@@ -10,7 +10,7 @@
       <div class="modal-body">
         <%= simple_form_for :ticket, url: project_sprint_tickets_path(project_id: project.id, sprint_id: project.current_sprint.id) do |f| %>
           <%= f.input :name %>
-          <%= f.input :description %>
+          <%= f.input :description, as: :text %>
           <%= f.input :hours_of_work %>
           <%= f.input :priority, collection: Ticket::PRIORITIES, default: 'Moderate' %>
           <%= f.input :status, input_html: { value: status }, as: :hidden %>

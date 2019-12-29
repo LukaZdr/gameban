@@ -20,6 +20,18 @@ class TicketsController < ApplicationController
     end
   end
 
+  def next
+    ticket = Ticket.find(params[:ticket_id])
+    ticket.next_status
+    redirect_to project_path(ticket.sprint.project)
+  end
+
+  def previous
+    ticket = Ticket.find(params[:ticket_id])
+    ticket.previous_status
+    redirect_to project_path(ticket.sprint.project)
+  end
+
   private
 
   def ticket_params
