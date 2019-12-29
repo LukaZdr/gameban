@@ -1,3 +1,13 @@
-<%= @project.name %> <%= link_to 'sprints', project_sprints_path(@project) %>
-
-[TODO: render kanban]
+<div class="row">
+  <div class="col">
+    <h3><%= @project.name %></h3>
+    <%= link_to 'sprints', project_sprints_path(@project) %>
+  </div>
+</div>
+<div class="row">
+  <% Ticket::STATUSES.each do |status| %>
+    <div class="col">
+      <%= render partial: 'tickets/column', locals: { status: status, project: @project } %>
+    </div>
+  <% end %>
+</div>

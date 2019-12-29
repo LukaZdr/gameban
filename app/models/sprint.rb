@@ -14,7 +14,7 @@ class Sprint < ApplicationRecord
 
   def different_qualities?
     unless code_qualeties.uniq.length == 5
-      errors.add(:code_qualeties, "is not active")
+      errors.add(:code_qualeties, 'two or more qualities are the same')
     end
   end
 end
