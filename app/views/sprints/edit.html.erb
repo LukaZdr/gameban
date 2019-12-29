@@ -1,11 +1,18 @@
-<%= simple_form_for @sprint, url: project_sprint_path(@sprint) do |f| %>
-  <%= f.input :project_id, html: { input: @project.id }, as: :hidden %>
-  <%= f.input :start_time, as: :date %>
-  <%= f.collection_radio_buttons :length, [[1, 'one week'] ,[2, 'two weeks'], [3, 'three weeks']],:first, :last %>
-  <%= f.input :quality_1 %>
-  <%= f.input :quality_2 %>
-  <%= f.input :quality_3 %>
-  <%= f.input :quality_4 %>
-  <%= f.input :quality_5 %>
-  <%= f.submit 'Save' %>
-<% end %>
+<div class="row">
+  <div class="col-4 offset-4">
+    <div class="card text-white bg-dark">
+      <div class="card-header"><h5>Edit Sprint</h5></div>
+  <div class="card-body">
+    <%= simple_form_for @sprint, url: project_sprint_path(@sprint) do |f| %>
+      <%= f.input :project_id, html: { input: @project.id }, as: :hidden %>
+      <%= f.input :start_time, as: :date %>
+      <%= f.collection_radio_buttons :length, [[1, 'one week'] ,[2, 'two weeks'], [3, 'three weeks']],:first, :last %>
+      <%= f.input :quality_1 %>
+      <%= f.input :quality_2 %>
+      <%= f.input :quality_3 %>
+      <%= f.input :quality_4 %>
+      <%= f.input :quality_5 %>
+      <%= f.submit 'Save', class: 'btn btn-info' %>
+    <% end %>
+  </div>
+</div>

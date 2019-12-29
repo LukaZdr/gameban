@@ -1,8 +1,30 @@
-<h3>Project Sprints</h3>
-<h5>Project: <%= @project.name %></h5>
-<%= link_to 'new sprint', new_project_sprint_path(@project) %> <br>
-<% @sprints.each do |sprint| %>
-  <%= sprint.start_time %>
-  <%= link_to 'edit', edit_project_sprint_path(id: sprint.id) %>
-  <br>
-<% end %>
+<div class="row">
+  <div class="col-4 offset-4">
+    <div class="card text-white bg-dark">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-10"><h5>Sprints for: <%= @project.name %></h5></div>
+          <div class="col"><%= link_to fa_icon('plus'), new_project_sprint_path(@project), class: 'btn btn-info'   %></div>
+        </div>
+      </div>
+        <div class="card-body">
+          <ul class="list-group text-dark">
+            <% @sprints.each do |sprint| %>
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col-8">
+                    <%= sprint.start_time %>
+                     until
+                    <%= sprint.start_time + sprint.length.weeks %>
+                  </div>
+                  <div class="col-1"><%= link_to fa_icon('edit'), edit_project_sprint_path(id: sprint.id), class: 'btn btn-info' %></div>
+                  <div class="col-1 offset-1"><%= link_to fa_icon('trash'), '#', class: 'btn btn-danger' %></div>
+                </div>
+              </li>
+            <% end %>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
