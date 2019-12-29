@@ -18,6 +18,7 @@ gem 'font-awesome-rails'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rails_12factor'
 gem 'simple_form'
+gem 'devise-bootstrap-views', '~> 1.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
