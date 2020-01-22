@@ -11,12 +11,41 @@ class User < ApplicationRecord
   def gain_xp(gained_xp)
     prior_xp = xp
     self.xp += gained_xp
+    while self.xp >= next_lvl_xp_goal
+      self.level += 1
+    end
     save!
     update_user_tendencys(xp, prior_xp)
   end
 
+  def increase_level
+
+  end
+
   def company_rank
     User.order(xp: :desc).index(self) + 1
+  end
+
+  def next_lvl_xp_goal
+    if self.level == 0
+      10
+    else
+      self.level * 25
+    end
+  end
+
+  def previous_lvl_xp_goal
+    if self.level == 0
+      0
+    elsif self.level == 1
+      10
+    else
+      (self.level-1) * 25
+    end
+  end
+
+  def percent_of_current_level
+    ((self.xp-previous_lvl_xp_goal).to_f/(next_lvl_xp_goal-previous_lvl_xp_goal)*100)
   end
 
   private
