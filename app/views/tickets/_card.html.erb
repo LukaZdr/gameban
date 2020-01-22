@@ -1,11 +1,5 @@
 <div class="row">
-  <div class="col-1">
-    <%= link_to '<', project_sprint_ticket_previous_path(project_id: ticket.sprint.project.id,
-                                                  sprint_id: ticket.sprint.id,
-                                                  ticket_id: ticket.id),
-                                                  method: :post %>
-  </div>
-  <div class="col-9">
+  <div class="col-12">
     <a class="card" href='#editTicket' data-toggle="modal" data-target="#createModal<%= ticket.id %>">
       <div class="card-body text-dark">
         <div class="card-title">
@@ -28,12 +22,6 @@
         </div>
       </div>
     </a>
-  </div>
-  <div class="col-1">
-    <%= link_to '>', project_sprint_ticket_next_path(project_id: ticket.sprint.project.id,
-                                                     sprint_id: ticket.sprint.id,
-                                                     ticket_id: ticket.id),
-                                                     method: :post %>
   </div>
 </div>
 

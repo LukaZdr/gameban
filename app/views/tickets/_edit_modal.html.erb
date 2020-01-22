@@ -13,6 +13,22 @@
           <%= f.input :description, as: :text %>
           <%= f.input :hours_of_work %>
           <%= f.input :priority, collection: Ticket::PRIORITIES, default: 'Moderate' %>
+        <div class="row">
+          <div class="col-1">
+            <%= link_to '<', project_sprint_ticket_previous_path(project_id: ticket.sprint.project.id,
+                                                                  sprint_id: ticket.sprint.id,
+                                                                  ticket_id: ticket.id),
+                                                                  method: :post,
+                                                                  class: 'btn btn-dark' %>
+          </div>
+          <div class="col-1 offset-9">
+            <%= link_to '>', project_sprint_ticket_next_path(project_id: ticket.sprint.project.id,
+                                                                  sprint_id: ticket.sprint.id,
+                                                                  ticket_id: ticket.id),
+                                                                  method: :post,
+                                                                  class: 'btn btn-dark' %>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
