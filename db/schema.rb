@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_28_123421) do
+ActiveRecord::Schema.define(version: 2020_01_22_222034) do
 
   create_table "project_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "project_id"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2019_12_28_123421) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "sprint_id"
     t.integer "hours_of_work"
-    t.string "priority", default: "Moderate"
+    t.string "priority", default: "Normal"
     t.string "status", default: "Backlog"
     t.index ["sprint_id"], name: "index_tickets_on_sprint_id"
   end

@@ -12,7 +12,7 @@
           <%= f.input :name %>
           <%= f.input :description, as: :text %>
           <%= f.input :hours_of_work %>
-          <%= f.input :priority, collection: Ticket::PRIORITIES, default: 'Moderate' %>
+          <%= f.input :priority, collection: Ticket::PRIORITIES, default: 'Normal' %>
           <%= f.input :status, input_html: { value: status }, as: :hidden %>
       </div>
       <div class="modal-footer">

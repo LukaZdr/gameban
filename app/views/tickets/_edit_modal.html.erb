@@ -12,7 +12,7 @@
           <%= f.input :name %>
           <%= f.input :description, as: :text %>
           <%= f.input :hours_of_work %>
-          <%= f.input :priority, collection: Ticket::PRIORITIES, default: 'Moderate' %>
+          <%= f.input :priority, collection: Ticket::PRIORITIES, default: 'Normal' %>
         <div class="row">
           <div class="col-1">
             <%= link_to '<', project_sprint_ticket_previous_path(project_id: ticket.sprint.project.id,

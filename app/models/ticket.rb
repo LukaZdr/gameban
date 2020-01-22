@@ -1,6 +1,6 @@
 class Ticket < ApplicationRecord
   STATUSES = ['Backlog', 'Todo', 'In progress', 'Quality Assurance', 'Done']
-  PRIORITIES = ['Critical', 'Major', 'Moderate', 'Low']
+  PRIORITIES = ['Critical', 'Major', 'Normal', 'Low']
 
   validates :name, :description, presence: true
   validates :priority, inclusion: { in: PRIORITIES }
