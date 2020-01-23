@@ -5,7 +5,7 @@
       <div class="card-body">
         <h3 class="card-title"><%= current_user.first_name %> <%= current_user.last_name %></h3>
         <p class="card-text">
-          Level: <%= current_user.level %> <br>
+          <%= render partial: 'shared/level_indicator' %>
           Alle Punkte: <%= current_user.xp %>
         </p>
       </div>

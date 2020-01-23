@@ -1,6 +1,6 @@
-<div class="progress" style="height: 25px;">
+<div class="progress" style="background-color: #aba;height: 25px;">
   <div class="progress-bar bg-success" role="progressbar" style="width: <%= current_user.percent_of_current_level %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="<%= current_user.next_lvl_xp_goal %>>">
     <%= current_user.xp - current_user.previous_lvl_xp_goal  %>xp/<%= current_user.next_lvl_xp_goal - current_user.previous_lvl_xp_goal %>xp
   </div>
-  <h5><span class="badge badge-pill badge-warning" style="position: absolute;right: 5px;" >Level:<%= current_user.level %></span></h5>
+  <%= render partial: 'shared/level_indicator' %>
 </div>
