@@ -38,5 +38,4 @@ class Ticket < ApplicationRecord
     points = priority_faktor[priority] * 2 * user.multiplier
     user.gain_xp(points)
   end
-
 end
