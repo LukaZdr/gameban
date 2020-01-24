@@ -22,7 +22,7 @@ class TicketsController < ApplicationController
 
   def next
     ticket = Ticket.find(params[:ticket_id])
-    ticket.next_status
+    ticket.next_status(current_user)
     redirect_to project_path(ticket.sprint.project)
   end
 

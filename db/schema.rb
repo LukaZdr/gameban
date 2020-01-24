@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_22_222034) do
+ActiveRecord::Schema.define(version: 2020_01_24_140135) do
 
   create_table "project_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "project_id"
@@ -62,7 +62,6 @@ ActiveRecord::Schema.define(version: 2020_01_22_222034) do
     t.string "last_name", null: false
     t.bigint "level", default: 0
     t.bigint "xp", default: 0
-    t.integer "picture_id", default: 0
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -71,6 +70,7 @@ ActiveRecord::Schema.define(version: 2020_01_22_222034) do
     t.integer "tendency", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "multiplier", default: 1
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

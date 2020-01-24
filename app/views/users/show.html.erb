@@ -3,10 +3,48 @@
     <div class="card text-white bg-dark">
       <div class="card-header">Profil</div>
       <div class="card-body">
-        <h3 class="card-title"><%= current_user.first_name %> <%= current_user.last_name %></h3>
+        <div class="row">
+          <div class="col">
+            <h3 class="card-title"><%= current_user.first_name %> <%= current_user.last_name %></h3>
+          </div>
+            <%= render partial: 'shared/level_indicator' %>
+          <div class="col">
+          </div>
+        </div>
         <p class="card-text">
-          Level: <%= current_user.level %> <br>
-          Punkte: <%= current_user.xp %>
+          <div class="row">
+            <div class="col-8">
+              <%= image_tag 'default_image.jpg', style: 'height: 300px; border-radius: 150px; margin-bottom: 30px; margin-top: 10px;' %>
+            </div>
+            <div class="col-4">
+              infos zum dude <br>
+              noch eine info
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-info">
+                  <div class="row">
+                    <div class="col">Alle Punkte:</div>
+                    <div class="col"><%= current_user.xp %></div>
+                  </div>
+                </li>
+                <li class="list-group-item list-group-item-info">
+                  <div class="row">
+                    <div class="col">Bisherige punkt in diesem Level:</div>
+                    <div class="col"><%= current_user.xp - current_user.previous_lvl_xp_goal %></div>
+                  </div>
+                </li>
+                <li class="list-group-item list-group-item-info">
+                  <div class="row">
+                    <div class="col">Punkte bis zum Nächstem Level:</div>
+                    <div class="col"><%= current_user.next_lvl_xp_goal - current_user.previous_lvl_xp_goal %></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
         </p>
       </div>
     </div>
