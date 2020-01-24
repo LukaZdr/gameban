@@ -3,15 +3,35 @@
     <div class="card text-white bg-dark">
       <div class="card-header"><h5>Edit Sprint</h5></div>
   <div class="card-body">
-    <%= simple_form_for @sprint, url: project_sprint_path(@sprint) do |f| %>
-      <%= f.input :project_id, html: { input: @project.id }, as: :hidden %>
-      <%= f.input :start_time, as: :date %>
-      <%= f.collection_radio_buttons :length, [[1, 'one week'] ,[2, 'two weeks'], [3, 'three weeks']],:first, :last %>
-      <%= f.input :quality_1 %>
-      <%= f.input :quality_2 %>
-      <%= f.input :quality_3 %>
-      <%= f.input :quality_4 %>
-      <%= f.input :quality_5 %>
+    <%= simple_form_for @sprint, url: project_sprint_path(@project, @sprint) do |f| %>
+      <% f.input :project_id, html: { input: @project.id }, as: :hidden %>
+      <div class="row">
+        <div class="col">
+          <p>When will the Sprint begin?</p>
+          <%= f.input :start_time, as: :date, label: false %>
+          <br></br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p>How long will the Sprint be?</p>
+          <%= f.collection_radio_buttons(:length,
+                                         [[1, 'a week'] ,[2, 'two weeks'], [3, 'three weeks']],
+                                         :first,
+                                         :last) { |a| a.radio_button + " " + a.label + " " } %>
+          <br></br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p>Welche fünf individuelle Codequalitäten sollen verbessert werden?</p>
+          <%= f.input :quality_1, label: false, placeholder: '(e.g. Security)' %>
+          <%= f.input :quality_2, label: false, placeholder: '(e.g. Understandability)' %>
+          <%= f.input :quality_3, label: false, placeholder: '(e.g. Time behaviour)' %>
+          <%= f.input :quality_4, label: false, placeholder: '(e.g. Analyzability)' %>
+          <%= f.input :quality_5, label: false, placeholder: '(e.g. Recoverability)' %>
+        </div>
+      </div>
       <%= f.submit 'Save', class: 'btn btn-info' %>
     <% end %>
   </div>
