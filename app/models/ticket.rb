@@ -35,9 +35,7 @@ class Ticket < ApplicationRecord
       'Normal' => 1,
       'Low' => 1
     }
-    user_factor = user.multiplier
-    points = priority_faktor[priority] * 2 * user_factor
-
+    points = priority_faktor[priority] * 2 * user.multiplier
     user.gain_xp(points)
   end
 
