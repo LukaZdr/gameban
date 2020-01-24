@@ -34,7 +34,7 @@ class SprintsController < ApplicationController
       redirect_to project_sprints_path(@project.id)
     else
       flash.now[:error] = 'Sprint could not be updated'
-      render 'edit'
+      render :edit
     end
   end
 
