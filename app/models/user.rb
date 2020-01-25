@@ -5,8 +5,10 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :level, :xp, presence: true
   has_many :tickets
   has_many :projects
+  has_many :achievements
 
   before_validation :give_anonyme_name
+  after_create :create_achievements
 
   def gain_xp(gained_xp)
     prior_xp = xp
@@ -16,10 +18,6 @@ class User < ApplicationRecord
     end
     save!
     update_user_tendencys(xp, prior_xp)
-  end
-
-  def increase_level
-
   end
 
   def company_rank
@@ -53,6 +51,12 @@ class User < ApplicationRecord
   def give_anonyme_name
     self.first_name ||= Faker::Color.color_name
     self.last_name ||= Faker::Creature::Animal.name
+  end
+
+  def create_achievements
+    self.achievements.create(name:'Gotta go fast',description: '2x Points for 24h', points:0, goal:2)
+    self.achievements.create(name:'1UP',description: 'Jump to the next level', points:0, goal:2)
+    self.achievements.create(name:'Pocket Change',description: 'Recive points from one critical ticket', points:0, goal:2)
   end
 
   def update_user_tendencys(new_xp, prior_xp)
