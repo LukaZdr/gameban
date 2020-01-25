@@ -35,3 +35,8 @@ Sprint.create(project_id: project_2.id,
               quality_3: 'Time behaviour',
               quality_4: 'Analyzability',
               quality_5: 'Recoverability')
+
+User.all.each do |user|
+  user.create_achievements
+end
+

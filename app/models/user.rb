@@ -46,17 +46,18 @@ class User < ApplicationRecord
     ((self.xp-previous_lvl_xp_goal).to_f/(next_lvl_xp_goal-previous_lvl_xp_goal)*100)
   end
 
+  def create_achievements
+    return if self.achievements.any?
+    self.achievements.create(name:'Gotta go fast', description: '2x Points for 24h', points:0, goal:2)
+    self.achievements.create(name:'Fast travel', description: 'Jump to the next level', points:0, goal:2)
+    self.achievements.create(name:'Extra fuel', description: 'Recive points from one critical ticket', points:0, goal:2)
+  end
+
   private
 
   def give_anonyme_name
     self.first_name ||= Faker::Color.color_name
     self.last_name ||= Faker::Creature::Animal.name
-  end
-
-  def create_achievements
-    self.achievements.create(name:'Gotta go fast',description: '2x Points for 24h', points:0, goal:2)
-    self.achievements.create(name:'1UP',description: 'Jump to the next level', points:0, goal:2)
-    self.achievements.create(name:'Pocket Change',description: 'Recive points from one critical ticket', points:0, goal:2)
   end
 
   def update_user_tendencys(new_xp, prior_xp)
