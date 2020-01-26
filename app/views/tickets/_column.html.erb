@@ -8,6 +8,8 @@
     <% project.get_column_tickets(status).each do |ticket| %>
       <% if status == 'Quality Assurance' %>
         <%= render partial: 'tickets/qa_card', locals: { ticket: ticket } %>
+      <% elsif status == 'Done' %>
+        <%= render partial: 'tickets/done_card', locals: { ticket: ticket } %>
       <% else %>
         <%= render partial: 'tickets/card', locals: { ticket: ticket } %>
       <% end %>
