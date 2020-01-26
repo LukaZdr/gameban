@@ -1,0 +1,24 @@
+<div class="alert alert-secondary" role="alert">
+  <div class="row">
+    <div class="col-3">
+      <%= render partial: 'shared/achivement_image_helper', locals: { name: achievement.name } %>
+    </div>
+    <div class="col">
+      <div class="row">
+        <div class="col">
+          <b><%= achievement.name %></b>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= achievement.description %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <span class="badge badge-pill badge-secondary">Redeemed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

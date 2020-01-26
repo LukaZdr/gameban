@@ -12,13 +12,12 @@
             <% @sprints.each do |sprint| %>
               <li class="list-group-item">
                 <div class="row">
-                  <div class="col-8">
+                  <div class="col-10">
                     <%= sprint.start_time %>
                      until
                     <%= sprint.start_time + sprint.length.weeks %>
                   </div>
                   <div class="col-1"><%= link_to fa_icon('edit'), edit_project_sprint_path(id: sprint.id), class: 'btn btn-info' %></div>
-                  <div class="col-1 offset-1"><%= link_to fa_icon('trash'), '#', class: 'btn btn-danger' %></div>
                 </div>
               </li>
             <% end %>

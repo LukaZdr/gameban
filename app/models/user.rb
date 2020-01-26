@@ -5,8 +5,10 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :level, :xp, presence: true
   has_many :tickets
   has_many :projects
+  has_many :achievements
 
   before_validation :give_anonyme_name
+  after_create :create_achievements
 
   def gain_xp(gained_xp)
     prior_xp = xp
@@ -16,10 +18,6 @@ class User < ApplicationRecord
     end
     save!
     update_user_tendencys(xp, prior_xp)
-  end
-
-  def increase_level
-
   end
 
   def company_rank
@@ -46,6 +44,13 @@ class User < ApplicationRecord
 
   def percent_of_current_level
     ((self.xp-previous_lvl_xp_goal).to_f/(next_lvl_xp_goal-previous_lvl_xp_goal)*100)
+  end
+
+  def create_achievements
+    return if self.achievements.any?
+    self.achievements.create(name:'Gotta go fast', description: '2x Points for 24h', points:0, goal:2)
+    self.achievements.create(name:'Fast travel', description: 'Jump to the next level', points:0, goal:2)
+    self.achievements.create(name:'Extra fuel', description: 'Recive 45xp', points:0, goal:2)
   end
 
   private

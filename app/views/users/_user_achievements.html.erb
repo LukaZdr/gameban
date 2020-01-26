@@ -1,0 +1,18 @@
+<div class="card text-white bg-info">
+  <div class="card-header">Achievements</div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col">
+          <% current_user.achievements.each do |achievement| %>
+            <% if achievement.completed? %>
+              <%= render partial: 'completed_achievement', locals: { achievement: achievement } %>
+            <% elsif achievement.redeemed? %>
+              <%= render partial: 'redeemed_achievement', locals: { achievement: achievement } %>
+            <% else%>
+              <%= render partial: 'uncomplete_achievement', locals: { achievement: achievement } %>
+            <% end %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>

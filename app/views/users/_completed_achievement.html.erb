@@ -1,0 +1,24 @@
+<div class="alert alert-success" role="alert">
+  <div class="row">
+    <div class="col-3">
+      <%= render partial: 'shared/achivement_image_helper', locals: { name: achievement.name } %>
+    </div>
+    <div class="col">
+      <div class="row">
+        <div class="col">
+          <b><%= achievement.name %></b>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= achievement.description %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= render partial: 'redeem_achievement_button', locals: { name: achievement.name, achievement_id: achievement.id } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

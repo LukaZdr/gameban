@@ -1,17 +1,17 @@
 <div class="row">
   <div class="col-4 offset-4">
     <div class="card text-white bg-dark">
-      <div class="card-header"><h5>Your Projects</h5></div>
+      <div class="card-header">Your Projects</div>
         <div class="col">
           <ul class="list-group" style:'margin-bottom: 20px;'>
             <% @projects.each do |project| %>
               <a href="<%= project_path(project) %>" class="list-group-item list-group-item-action list-group-item-secondary", style='margin-bottom: 20px;'>
                 <div class="row">
                   <div class="col-4">
-                    <%= image_tag 'project_image.png', style: 'height: 100px; border-radius: 100px;' %>
+                    <%= fa_icon'list-alt', class: "fa-5x" %>
                   </div>
                   <div class="col">
-                    <h5><%= project.name %></h5>
+                    <b><%= project.name %></b><br>
                     <%= project.description %>
                   </div>
                 </div>

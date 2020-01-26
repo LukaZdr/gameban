@@ -14,7 +14,7 @@
         <p class="card-text">
           <div class="row">
             <div class="col-8">
-              <%= image_tag 'default_image.jpg', style: 'height: 300px; border-radius: 150px; margin-bottom: 30px; margin-top: 10px;' %>
+              <%= image_tag 'default_image.jpg', style: 'height: 250px; border-radius: 150px; margin-bottom: 30px; margin-top: 10px;' %>
             </div>
             <div class="col-4">
               infos zum dude <br>
@@ -26,20 +26,20 @@
               <ul class="list-group">
                 <li class="list-group-item list-group-item-info">
                   <div class="row">
-                    <div class="col">Alle Punkte:</div>
+                    <div class="col">All points:</div>
                     <div class="col"><%= current_user.xp %></div>
                   </div>
                 </li>
                 <li class="list-group-item list-group-item-info">
                   <div class="row">
-                    <div class="col">Bisherige punkt in diesem Level:</div>
+                    <div class="col">Points in this level:</div>
                     <div class="col"><%= current_user.xp - current_user.previous_lvl_xp_goal %></div>
                   </div>
                 </li>
                 <li class="list-group-item list-group-item-info">
                   <div class="row">
-                    <div class="col">Punkte bis zum Nächstem Level:</div>
-                    <div class="col"><%= current_user.next_lvl_xp_goal - current_user.previous_lvl_xp_goal %></div>
+                    <div class="col">Points to next level:</div>
+                    <div class="col"><%= current_user.next_lvl_xp_goal - current_user.xp %></div>
                   </div>
                 </li>
               </ul>
@@ -48,5 +48,7 @@
         </p>
       </div>
     </div>
+    <br>
+    <%= render partial: 'user_achievements.html.erb' %>
   </div>
 </div>
