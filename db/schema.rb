@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_24_151400) do
+ActiveRecord::Schema.define(version: 2020_01_26_220541) do
 
   create_table "achievements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -31,6 +31,17 @@ ActiveRecord::Schema.define(version: 2020_01_24_151400) do
   create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "description"
+  end
+
+  create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "text"
+    t.integer "quality_1"
+    t.integer "quality_2"
+    t.integer "quality_3"
+    t.integer "quality_4"
+    t.integer "quality_5"
+    t.bigint "ticket_id"
+    t.index ["ticket_id"], name: "index_reviews_on_ticket_id"
   end
 
   create_table "sprints", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -56,7 +67,9 @@ ActiveRecord::Schema.define(version: 2020_01_24_151400) do
     t.integer "hours_of_work"
     t.string "priority", default: "Normal"
     t.string "status", default: "Backlog"
+    t.bigint "user_id"
     t.index ["sprint_id"], name: "index_tickets_on_sprint_id"
+    t.index ["user_id"], name: "index_tickets_on_user_id"
   end
 
   create_table "user_tickets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

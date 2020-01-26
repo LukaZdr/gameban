@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-12">
+    <a class="card text-white bg-secondary" href='#qaTicket' data-toggle="modal" data-target="#qaModal<%= ticket.id %>">
+      <div class="card-body">
+        <div class="card-title">
+          <div class="row">
+            <div class="col-8">
+              <b><%= ticket.name %></b>
+            </div>
+            <div class="col-3">
+              <div class="row">
+                <%= render partial: 'tickets/prioritie_badge', locals: { priority: ticket.priority } %>
+              </div>
+              <div class="row">
+                Hours: <%= ticket.hours_of_work %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<%= render partial: 'reviews/review_modal', locals: { ticket: ticket } %>

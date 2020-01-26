@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   def gain_xp(gained_xp)
     prior_xp = xp
-    self.xp += gained_xp
+    self.xp += gained_xp * self.multiplier
     while self.xp >= next_lvl_xp_goal
       self.level += 1
     end
@@ -48,7 +48,7 @@ class User < ApplicationRecord
 
   def create_achievements
     return if self.achievements.any?
-    self.achievements.create(name:'Gotta go fast', description: '2x Points for 24h', points:0, goal:2)
+    self.achievements.create(name:'Gotta go fast', description: '2x Points for 24h', points:0, goal:1)
     self.achievements.create(name:'Fast travel', description: 'Jump to the next level', points:0, goal:2)
     self.achievements.create(name:'Extra fuel', description: 'Recive 45xp', points:0, goal:2)
   end
