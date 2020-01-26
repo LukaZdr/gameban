@@ -8,7 +8,15 @@ class ReviewsController < ApplicationController
       current_user.gain_xp(10)
       ticket.next_status
       fast_travel_achievement = Achievement.where(user_id: ticket.user.id, name: 'Fast travel').first
-      fast_travel_achievement.add_point
+      unless fast_travel_achievement.completed?
+        fast_travel_achievement.add_point
+        flash[:notice] = 'Achievement unlocked! Check your Profile aaaa' if fast_travel_achievement.completed?
+      end
+      gotta_go_fast_achievement = Achievement.where(user_id: current_user.id, name: 'Gotta go fast').first
+      unless gotta_go_fast_achievement.completed?
+        gotta_go_fast_achievement.add_point
+        flash[:notice] = 'Achievement unlocked! Check your Profile' if gotta_go_fast_achievement.completed?
+      end
     else
       flash[:alert] = 'Review could not be created'
     end

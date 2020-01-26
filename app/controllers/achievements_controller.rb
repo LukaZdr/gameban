@@ -12,4 +12,12 @@ class AchievementsController < ApplicationController
     achievement.redeem
     redirect_to user_path(current_user)
   end
+
+  def redeem_gotta_go_fast
+    current_user.multiplier = 2
+    current_user.save
+    achievement = Achievement.where(user_id: current_user.id, name: 'Gotta go fast').first
+    achievement.redeem
+    redirect_to user_path(current_user)
+  end
 end
