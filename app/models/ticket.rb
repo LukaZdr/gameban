@@ -10,9 +10,9 @@ class Ticket < ApplicationRecord
   has_one :review
 
 
-  def next_status(user)
+  def next_status
     new_status = STATUSES[STATUSES.index(self.status) + 1]
-    complete_ticket(user, self.priority) if new_status == 'Done'
+    complete_ticket(self.priority) if new_status == 'Done'
     return if new_status == nil
 
     self.status = new_status
@@ -29,14 +29,14 @@ class Ticket < ApplicationRecord
 
   private
 
-  def complete_ticket(user, priority)
+  def complete_ticket(priority)
     priority_faktor = {
       'Critical' => 3,
       'Major' => 2,
       'Normal' => 1,
       'Low' => 1
     }
-    points = priority_faktor[priority] * 2 * user.multiplier
-    user.gain_xp(points)
+    points = priority_faktor[priority] * 2 * self.user.multiplier
+    self.user.gain_xp(points)
   end
 end

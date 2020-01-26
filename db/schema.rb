@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_26_194334) do
+ActiveRecord::Schema.define(version: 2020_01_26_220541) do
 
   create_table "achievements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -67,7 +67,9 @@ ActiveRecord::Schema.define(version: 2020_01_26_194334) do
     t.integer "hours_of_work"
     t.string "priority", default: "Normal"
     t.string "status", default: "Backlog"
+    t.bigint "user_id"
     t.index ["sprint_id"], name: "index_tickets_on_sprint_id"
+    t.index ["user_id"], name: "index_tickets_on_user_id"
   end
 
   create_table "user_tickets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

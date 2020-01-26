@@ -1,10 +1,14 @@
 class ReviewsController < ApplicationController
   def create
     ticket = Ticket.find(params[:ticket_id])
-    review = ticket.build_review(review_params)
+
+    review = Review.first_or_initialize(ticket_id: ticket.id)
 
     if review.save
-      ticket.next_status(current_user)
+      current_user.gain_xp(10)
+      ticket.next_status
+      fast_travel_achievement = Achievement.where(user_id: ticket.user.id, name: 'Fast travel').first
+      fast_travel_achievement.add_point
     else
       flash[:alert] = 'Review could not be created'
     end

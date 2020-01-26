@@ -2,15 +2,17 @@ class TicketsController < ApplicationController
   def create
     @sprint = Sprint.find(params[:sprint_id])
     ticket = @sprint.tickets.build(ticket_params)
+    ticket.user_id = current_user.id
     if ticket.save
       extra_fuel_achievement = Achievement.where(user_id: current_user.id, name: 'Extra fuel').first
-      extra_fuel_achievement.add_point
-      flash[:notice] = 'Achievement unlocked! Check your Profile' if extra_fuel_achievement.completed?
-      redirect_to project_path(params[:project_id])
+      unless extra_fuel_achievement.completed?
+        extra_fuel_achievement.add_point
+        flash[:notice] = 'Achievement unlocked! Check your Profile'
+      end
     else
       flash[:alert] = 'Ticket could not be created'
-      redirect_to project_path(params[:project_id])
     end
+    redirect_to project_path(params[:project_id])
   end
 
   def update
@@ -25,11 +27,7 @@ class TicketsController < ApplicationController
 
   def next
     ticket = Ticket.find(params[:ticket_id])
-    ticket.next_status(current_user)
-    if ticket.status == 'Done'
-      fast_travel_achievement = Achievement.where(user_id: current_user.id, name: 'Fast travel').first
-      fast_travel_achievement.add_point
-    end
+    ticket.next_status
     redirect_to project_path(ticket.sprint.project)
   end
 
