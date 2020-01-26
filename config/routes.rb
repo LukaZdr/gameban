@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index] do
     resources :achievement do
       post "/redeem_extra_fuel" => "achievements#redeem_extra_fuel"
+      post "/redeem_fast_travel" => "achievements#redeem_fast_travel"
     end
   end
   resources :projects, only: [:index, :show] do

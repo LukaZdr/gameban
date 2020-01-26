@@ -15,7 +15,10 @@ class Achievement < ApplicationRecord
   end
 
   def add_point
-
+    if self.goal > self.points
+      self.points += 1
+    end
+    self.save
   end
 
   def redeem

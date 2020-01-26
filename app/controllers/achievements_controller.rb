@@ -5,4 +5,11 @@ class AchievementsController < ApplicationController
     achievement.redeem
     redirect_to user_path(current_user)
   end
+
+  def redeem_fast_travel
+    current_user.gain_xp(25)
+    achievement = Achievement.where(user_id: current_user.id, name: 'Fast travel').first
+    achievement.redeem
+    redirect_to user_path(current_user)
+  end
 end
