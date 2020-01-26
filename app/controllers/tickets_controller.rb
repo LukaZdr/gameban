@@ -7,7 +7,7 @@ class TicketsController < ApplicationController
       extra_fuel_achievement = Achievement.where(user_id: current_user.id, name: 'Extra fuel').first
       unless extra_fuel_achievement.completed?
         extra_fuel_achievement.add_point
-        flash[:notice] = 'Achievement unlocked! Check your Profile'
+        flash[:notice] = 'Achievement unlocked! Check your Profile' if extra_fuel_achievement.completed?
       end
     else
       flash[:alert] = 'Ticket could not be created'
