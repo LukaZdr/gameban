@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only: [:show, :index]
+  resources :users, only: [:show, :index] do
+    resources :achievement do
+      post "/redeem_extra_fuel" => "achievements#redeem_extra_fuel"
+    end
+  end
   resources :projects, only: [:index, :show] do
     resources :sprints do
       resources :tickets, only: [:create, :update, :delete] do

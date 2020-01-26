@@ -4,34 +4,13 @@
     <div class="row">
       <div class="col">
           <% current_user.achievements.each do |achievement| %>
-            <div class="alert alert-warning" role="alert">
-              <div class="row">
-                <div class="col-3">
-                  <%= render partial: 'shared/achivement_image_helper', locals: {name: achievement.name } %>
-                </div>
-                <div class="col">
-                  <div class="row">
-                    <div class="col">
-                      <b><%= achievement.name %></b>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col">
-                      <%= achievement.description %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col">
-                      <div class="progress" style="background-color: #abb;">
-                        <div class="progress-bar bg-info" role="progressbar" style="width: <%= achievement.current_percent %>%;" aria-valuenow="<%= achievement.points %>" aria-valuemin="0" aria-valuemax="<%= achievement.goal %>">
-                          <%= achievement.points %>/<%= achievement.goal%>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <% if achievement.completed? %>
+              <%= render partial: 'completed_achievement', locals: { achievement: achievement } %>
+            <% elsif achievement.redeemed? %>
+              <%= render partial: 'redeemed_achievement', locals: { achievement: achievement } %>
+            <% else%>
+              <%= render partial: 'uncomplete_achievement', locals: { achievement: achievement } %>
+            <% end %>
           <% end %>
       </div>
     </div>

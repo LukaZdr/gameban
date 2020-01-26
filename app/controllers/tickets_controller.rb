@@ -3,6 +3,9 @@ class TicketsController < ApplicationController
     @sprint = Sprint.find(params[:sprint_id])
     ticket = @sprint.tickets.build(ticket_params)
     if ticket.save
+      extra_fuel_achievement = Achievement.where(user_id: current_user.id, name: 'Extra fuel').first
+      add_point_to_achievement(extra_fuel_achievement)
+      flash[:notice] = 'Achievement unlocked! Check your Profile' if extra_fuel_achievement.completed?
       redirect_to project_path(params[:project_id])
     else
       flash[:alert] = 'Ticket could not be created'
@@ -40,5 +43,12 @@ class TicketsController < ApplicationController
                                    :hours_of_work,
                                    :priority,
                                    :status)
+  end
+
+  def add_point_to_achievement(achievement)
+    if achievement.goal > achievement.points
+      achievement.points += 1
+    end
+    achievement.save
   end
 end

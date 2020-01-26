@@ -7,6 +7,19 @@ class Achievement < ApplicationRecord
   end
 
   def completed?
-    points == goal
+    self.points == goal
+  end
+
+  def redeemed?
+    self.goal == -1
+  end
+
+  def add_point
+
+  end
+
+  def redeem
+    self.goal = -1
+    save
   end
 end

@@ -1,0 +1,8 @@
+<% if name == 'Gotta go fast' %>
+  <%= link_to 'Redeem', "#", class:'btn btn-success'%>
+<% elsif name == 'Fast travel' %>
+  <%= link_to 'Redeem', "#", class:'btn btn-success'%>
+<% elsif name == 'Extra fuel' %>
+  <%= link_to 'Redeem', user_achievement_redeem_extra_fuel_path(user_id: current_user.id,
+                                                                achievement_id: achievement_id), method: :post, class:'btn btn-success'%>
+<% end %>
