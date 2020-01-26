@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resources :tickets, only: [:create, :update, :delete] do
         post "/next" => "tickets#next"
         post "/previous" => "tickets#previous"
+        resource :review, only: [:create]
       end
     end
   end

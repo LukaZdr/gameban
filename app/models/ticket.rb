@@ -7,6 +7,7 @@ class Ticket < ApplicationRecord
   validates :status, inclusion: { in: STATUSES }
   belongs_to :sprint
   belongs_to :user, optional: true
+  has_one :review
 
 
   def next_status(user)
