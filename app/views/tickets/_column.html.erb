@@ -16,10 +16,12 @@
       <br>
     <% end %>
   </div>
-  <div class="card-footer">
-    <a  href='#createTicket' class='btn btn-secondary' data-toggle="modal" data-target="#create<%= status.parameterize %>Ticket">
-      <%= fa_icon("plus") %>
-    </a>
-    <%= render partial: 'tickets/create_modal', locals: { status: status, project: project} %>
-  </div>
+  <% unless status == 'Done' %>
+    <div class="card-footer">
+      <a  href='#createTicket' class='btn btn-secondary' data-toggle="modal" data-target="#create<%= status.parameterize %>Ticket">
+        <%= fa_icon("plus") %>
+      </a>
+      <%= render partial: 'tickets/create_modal', locals: { status: status, project: project} %>
+    </div>
+  <% end %>
 </div>
