@@ -7,7 +7,7 @@ class Ticket < ApplicationRecord
   validates :status, inclusion: { in: STATUSES }
   belongs_to :sprint
   belongs_to :user, optional: true
-  has_one :review
+  has_many :review
 
   def next_status
     new_status = STATUSES[STATUSES.index(self.status) + 1]

@@ -1,15 +1,8 @@
 class ReviewsController < ApplicationController
   def create
     ticket = Ticket.find(params[:ticket_id])
+    review = ticket.review.build(review_params)
 
-    review = Review.first_or_initialize(ticket_id: ticket.id) do |review|
-      review.text = review_params[:text]
-      review.quality_1 = review_params[:quality_1]
-      review.quality_2 = review_params[:quality_2]
-      review.quality_3 = review_params[:quality_3]
-      review.quality_4 = review_params[:quality_4]
-      review.quality_5 = review_params[:quality_5]
-    end
     if review.save
       current_user.gain_xp(10)
       ticket.next_status

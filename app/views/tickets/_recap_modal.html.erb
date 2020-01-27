@@ -18,12 +18,12 @@
         </ul>
         Review:
         <ul class="list-group">
-          <li class="list-group-item list-group-item-secondary"><b>Description:</b> <%= ticket.review.text %></li>
-          <li class="list-group-item list-group-item-secondary"><b><%= ticket.sprint.quality_1 %>:</b> <%= ticket.review.quality_1 %></li>
-          <li class="list-group-item list-group-item-secondary"><b><%= ticket.sprint.quality_2 %>:</b> <%= ticket.review.quality_2 %></li>
-          <li class="list-group-item list-group-item-secondary"><b><%= ticket.sprint.quality_3 %>:</b> <%= ticket.review.quality_3 %></li>
-          <li class="list-group-item list-group-item-secondary"><b><%= ticket.sprint.quality_4 %>:</b> <%= ticket.review.quality_4 %></li>
-          <li class="list-group-item list-group-item-secondary"><b><%= ticket.sprint.quality_5 %>:</b> <%= ticket.review.quality_5 %></li>
+          <li class="list-group-item list-group-item-secondary"><b>Description:</b> <%= ticket.review.last.text %></li>
+          <li class="list-group-item list-group-item-secondary"><b><%= ticket.sprint.quality_1 %>:</b> <%= ticket.review.last.quality_1 %></li>
+          <li class="list-group-item list-group-item-secondary"><b><%= ticket.sprint.quality_2 %>:</b> <%= ticket.review.last.quality_2 %></li>
+          <li class="list-group-item list-group-item-secondary"><b><%= ticket.sprint.quality_3 %>:</b> <%= ticket.review.last.quality_3 %></li>
+          <li class="list-group-item list-group-item-secondary"><b><%= ticket.sprint.quality_4 %>:</b> <%= ticket.review.last.quality_4 %></li>
+          <li class="list-group-item list-group-item-secondary"><b><%= ticket.sprint.quality_5 %>:</b> <%= ticket.review.last.quality_5 %></li>
         </ul>
       </div>
       <div class="modal-footer">
