@@ -9,7 +9,6 @@ class Ticket < ApplicationRecord
   belongs_to :user, optional: true
   has_one :review
 
-
   def next_status
     new_status = STATUSES[STATUSES.index(self.status) + 1]
     complete_ticket(self.priority) if new_status == 'Done'
