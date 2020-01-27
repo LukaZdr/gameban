@@ -27,7 +27,7 @@ Sprint.create(project_id: project_2.id,
               quality_3: 'Time behaviour',
               quality_4: 'Analyzability',
               quality_5: 'Recoverability')
-Sprint.create(project_id: project_2.id,
+Sprint.create(project_id: project_3.id,
               start_time: Date.today,
               length: 3,
               quality_1: 'Security',
