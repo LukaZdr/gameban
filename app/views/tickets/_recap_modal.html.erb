@@ -8,20 +8,23 @@
         </button>
       </div>
       <div class="modal-body">
-      <h5><%= ticket.name %></h5>
-      Ticket:
-      name
-      description
-      hours_of_work"
-      priority
-
-      Review:
-      text:
-      Code-Quality: foo
-      Code-Quality: foo
-      Code-Quality: foo
-      Code-Quality: foo
-      Code-Quality: foo
+        <h5><%= ticket.name %></h5>
+        Ticket:
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-secondary"><b>Name:</b> <%= ticket.name %></li>
+          <li class="list-group-item list-group-item-secondary"><b>Description:</b> <%= ticket.description %></li>
+          <li class="list-group-item list-group-item-secondary"><b>Hours of work:</b> <%= ticket.hours_of_work %></li>
+          <li class="list-group-item list-group-item-secondary"><b>Priority:</b> <%= render partial: 'tickets/prioritie_badge', locals: { priority: ticket.priority } %></li>
+        </ul>
+        Review:
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-secondary"><b>Description:</b> <%= ticket.review.text %></li>
+          <li class="list-group-item list-group-item-secondary"><b><%= ticket.sprint.quality_1 %>:</b> <%= ticket.review.quality_1 %></li>
+          <li class="list-group-item list-group-item-secondary"><b><%= ticket.sprint.quality_2 %>:</b> <%= ticket.review.quality_2 %></li>
+          <li class="list-group-item list-group-item-secondary"><b><%= ticket.sprint.quality_3 %>:</b> <%= ticket.review.quality_3 %></li>
+          <li class="list-group-item list-group-item-secondary"><b><%= ticket.sprint.quality_4 %>:</b> <%= ticket.review.quality_4 %></li>
+          <li class="list-group-item list-group-item-secondary"><b><%= ticket.sprint.quality_5 %>:</b> <%= ticket.review.quality_5 %></li>
+        </ul>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

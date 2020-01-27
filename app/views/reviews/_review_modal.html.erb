@@ -9,7 +9,7 @@
       </div>
       <div class="modal-body">
         <h5><%= ticket.name %></h5>
-        <%= simple_form_for :review, url: project_sprint_ticket_review_path(project_id: ticket.sprint.project.id, sprint_id: ticket.sprint.id, ticket_id: ticket.id) do |f| %>
+        <%= simple_form_for :review, url: project_sprint_ticket_reviews_path(project_id: ticket.sprint.project.id, sprint_id: ticket.sprint.id, ticket_id: ticket.id) do |f| %>
           Description
           <%= f.input :text, as: :text, label: false %>
           <%= ticket.sprint.quality_1 %>
